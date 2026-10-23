@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Tableau de bord des capteurs - École</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1><i class="fas fa-school"></i> Tableau de bord des capteurs de l'école</h1>
+            <p class="subtitle">Surveillance en temps réel des conditions intérieures et extérieures</p>
+        </div>
+    </header>
+
+    <main class="container">
+    <div class="dashboard-grid">
+        <!-- COLONNE 1 : EXTÉRIEUR -->
+        <section class="sensor-section exterior">
+            <div class="section-header">
+                <h2><i class="fas fa-tree"></i> Extérieur</h2>
+                <p class="section-description">Capteurs situés à l'extérieur du bâtiment</p>
+                <div class="section-status">
+                    <span class="status-dot active"></span>
+                    <span class="status-text">Actif</span>
+                </div>
+            </div>
+            
+            <div class="sensor-list">
+                <!-- Température extérieure -->
+                <div class="sensor-item">
+                    <div class="sensor-info">
+                        <i class="fas fa-thermometer-half sensor-icon temperature"></i>
+                        <div class="sensor-details">
+                            <h3>Température</h3>
+                            <p class="sensor-location">Zone extérieure nord</p>
+                        </div>
+                    </div>
+                    <div class="sensor-display" id="DATA-MEGA-DISTANT-1">
+                        <span class="value">--</span>
+                        <span class="unit">°C</span>
+                    </div>
+                </div>
+                
+                <!-- Lumière extérieure -->
+                <div class="sensor-item">
+                    <div class="sensor-info">
+                        <i class="fas fa-sun sensor-icon light"></i>
+                        <div class="sensor-details">
+                            <h3>Lumière</h3>
+                            <p class="sensor-location">Niveau d'ensoleillement</p>
+                        </div>
+                    </div>
+                    <div class="sensor-display" id="DATA-MEGA-DISTANT-2">
+                        <span class="value">--</span>
+                        <span class="unit">lux</span>
+                    </div>
+                </div>
+                
+                <!-- Pression atmosphérique -->
+                <div class="sensor-item">
+                    <div class="sensor-info">
+                        <i class="fas fa-tachometer-alt sensor-icon pressure"></i>
+                        <div class="sensor-details">
+                            <h3>Pression</h3>
+                            <p class="sensor-location">Atmosphérique</p>
+                        </div>
+                    </div>
+                    <div class="sensor-display" id="DATA-MEGA-DISTANT-3">
+                        <span class="value">--</span>
+                        <span class="unit">hPa</span>
+                    </div>
+                </div>
+                
+                <!-- Alarme visuelle extérieure -->
+                <div class="sensor-item alarm">
+                    <div class="sensor-info">
+                        <i class="fas fa-bell sensor-icon alarm-icon"></i>
+                        <div class="sensor-details">
+                            <h3>Alarme visuelle</h3>
+                            <p class="sensor-location">LED signalétique</p>
+                        </div>
+                    </div>
+                    <div class="sensor-display" id="DATA-MEGA-DISTANT-4">
+                        <span class="alarm-status inactive">Non</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-footer">
+                <p><i class="fas fa-sync-alt"></i> Mise à jour : <span id="update-ext">--:--</span></p>
+            </div>
+        </section>
+
+        <!-- COLONNE 2 : INTÉRIEUR -->
+        <section class="sensor-section interior">
+            <div class="section-header">
+                <h2><i class="fas fa-home"></i> Intérieur</h2>
+                <p class="section-description">Capteurs situés dans le gymnase</p>
+                <div class="section-status">
+                    <span class="status-dot active"></span>
+                    <span class="status-text">Actif</span>
+                </div>
+            </div>
+            
+            <div class="sensor-list">
+                <!-- Niveau de bruit -->
+                <div class="sensor-item">
+                    <div class="sensor-info">
+                        <i class="fas fa-volume-up sensor-icon noise"></i>
+                        <div class="sensor-details">
+                            <h3>Niveau de bruit</h3>
+                            <p class="sensor-location">Ambiance sonore</p>
+                        </div>
+                    </div>
+                    <div class="sensor-display" id="DATA-MEGA-DISTANT-5">
+                        <span class="value">--</span>
+                        <span class="unit">dB</span>
+                    </div>
+                </div>
+                
+                <!-- Température et humidité -->
+                <div class="sensor-item dual">
+                    <div class="sensor-info">
+                        <i class="fas fa-temperature-low sensor-icon temp-humidity"></i>
+                        <div class="sensor-details">
+                            <h3>Température & Humidité</h3>
+                            <p class="sensor-location">Conditions ambiantes</p>
+                        </div>
+                    </div>
+                    <div class="sensor-display dual-display" id="DATA-MEGA-DISTANT-6">
+                        <div class="value-group">
+                            <span class="value">--</span>
+                            <span class="unit">°C</span>
+                        </div>
+                        <div class="value-group">
+                            <span class="value">--</span>
+                            <span class="unit">%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Qualité de l'air -->
+                <div class="sensor-item">
+                    <div class="sensor-info">
+                        <i class="fas fa-wind sensor-icon air"></i>
+                        <div class="sensor-details">
+                            <h3>Qualité de l'air</h3>
+                            <p class="sensor-location">Niveau CO2</p>
+                        </div>
+                    </div>
+                    <div class="sensor-display" id="DATA-MEGA-DISTANT-7">
+                        <span class="value">--</span>
+                        <span class="unit">ppm</span>
+                    </div>
+                </div>
+                
+                <!-- Alarme visuelle intérieure -->
+                <div class="sensor-item alarm">
+                    <div class="sensor-info">
+                        <i class="fas fa-bell sensor-icon alarm-icon"></i>
+                        <div class="sensor-details">
+                            <h3>Alarme visuelle</h3>
+                            <p class="sensor-location">LED signalétique</p>
+                        </div>
+                    </div>
+                    <div class="sensor-display" id="DATA-MEGA-DISTANT-8">
+                        <span class="alarm-status inactive">Non</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-footer">
+                <p><i class="fas fa-sync-alt"></i> Mise à jour : <span id="update-int">--:--</span></p>
+            </div>
+        </section>
+
+        <!-- COLONNE 3 : INFORMATIONS SYSTÈME -->
+        <section class="info-section">
+            <div class="section-header">
+                <h2><i class="fas fa-server"></i> Système</h2>
+                <p class="section-description">État du réseau et connexions</p>
+                <div class="section-status">
+                    <span class="status-dot" id="sys-status-dot"></span>
+                    <span class="status-text" id="sys-status-text">Initialisation</span>
+                </div>
+            </div>
+            
+            <div class="system-info">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Arduino Mega</h3>
+                        <p class="info-desc">Carte maître de collecte</p>
+                        <p class="info-value"><span class="status-indicator" id="mega-status"></span> <span id="mega-status-text">Inconnu</span></p>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>NodeMCU</h3>
+                        <p class="info-desc">Pont WiFi vers le web</p>
+                        <p class="info-value" id="node-status"><span class="status-indicator"></span> En attente...</p>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Interface Web</h3>
+                        <p class="info-desc">Visualisation temps réel</p>
+                        <p class="info-value"><span class="status-indicator active"></span> Opérationnelle</p>
+                    </div>
+                </div>
+                
+                <div class="info-card stats">
+                    <div class="info-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Statistiques</h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <span class="stat-label">Capteurs actifs</span>
+                                <span class="stat-value" id="active-sensors">0/8</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Dernière mise à jour</span>
+                                <span class="stat-value" id="last-update-time">--:--:--</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Temps de fonctionnement</span>
+                                <span class="stat-value" id="uptime">00:00:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Communication</h3>
+                        <p class="info-desc">WebSocket vers NodeMCU</p>
+                        <p class="info-value"><span class="status-indicator" id="ws-status"></span> <span id="ws-status-text">Initialisation...</span></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-footer">
+                <p><i class="fas fa-info-circle"></i> En attente de connexion au NodeMCU...</p>
+            </div>
+        </section>
+    </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <p><i class="fas fa-code"></i> Projet de surveillance environnementale - École</p>
+                <p class="footer-sub">Interface de visualisation des données des capteurs</p>
+            </div>
+            <div class="team">
+                <h4>Équipe de développement:</h4>
+                <ul>
+                    <li>NDOCKO Aaron</li>
+                    <li>LE LIEVRE Louis</li>
+                    <li>COUNILH Quentin</li>
+                    <li>THOUVENIN Amélie</li>
+                    <li>POUSSIER Tom</li>
+                </ul>
+            </div>
+            <div class="tech-stack">
+                <h4>Technologies utilisées:</h4>
+                <div class="tech-icons">
+                    <span class="tech-icon"><i class="fab fa-html5"></i> HTML5</span>
+                    <span class="tech-icon"><i class="fab fa-css3-alt"></i> CSS3</span>
+                    <span class="tech-icon"><i class="fab fa-js"></i> JavaScript</span>
+                    <span class="tech-icon"><i class="fab fa-node-js"></i> Node.js</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 - Projet Arduino Mega & Node.js - Tous droits réservés</p>
+            <p class="timestamp">Dernière mise à jour du code HTML: <span id="current-date"></span></p>
+        </div>
+    </footer>
+
+    <!-- Scripts JavaScript -->
+    <script src="script-data-reception.js"></script>
+    <script>
+        // Script pour afficher la date actuelle dans le footer
+        document.getElementById('current-date').textContent = new Date().toLocaleDateString('fr-FR', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    </script>
+</body>
+</html>
